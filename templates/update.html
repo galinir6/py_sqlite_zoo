@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Update{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+
+
+<h1>Update Animal Details</h1>
+<form method="post">
+  <label for="animal">Animal:</label>
+  <input type="text" id="animal" name="animal" value="{{ animal_data[1] }}" required><br>
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age" value="{{ animal_data[2] }}" required><br>
+
+  <label for="category">Category:</label>
+  <input type="text" id="category" name="category" value="{{ animal_data[3] }}" required><br>
+
+  <label for="picture">Picture URL:</label>
+  <input type="text" id="picture" name="picture" value="{{ animal_data[4] }}" required><br>
+
+  <input type="submit" value="Update">
+</form>
+{% endblock %}

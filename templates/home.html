@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+<h1 style="text-align: center;">Our animals</h1>
+
+{% if zoo %}
+<table border="2" >
+    <tr>
+        <th>Animal</th>
+        <th>Age</th>
+        <th>Category</th>
+        <th>Picture</th>
+        <th>Remove</th>
+        <th>Update</th>
+    </tr>
+    {% for animal in zoo %}
+    <tr>
+        <td>{{ animal[1] }}</td>
+        <td>{{ animal[2] }}</td>
+        <td>{{ animal[3] }}</td>
+        <td><img src="{{ animal[4] }}" width="50px"></td>
+        <td><form action="/remove/{{ animal[0] }}" method="post">
+            <input type="submit" value="Remove" class="btn btn-danger">
+        </form></td>
+        <td>
+        <form style="display: inline;" action="/update/{{ animal[0] }}" method="get">
+          <button type="submit" class="btn btn-success">Update</button>
+      </form></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No animals available.</p>
+{% endif %}
+{% endblock %}
